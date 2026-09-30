@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Zilla_Slab, IBM_Plex_Sans, IBM_Plex_Mono } from 'next/font/google';
 import { Toaster } from '@/components/ui/sonner';
 import './globals.css';
+import { QueryProvider } from '@/components/providers/query-provider';
 
 const zillaSlab = Zilla_Slab({
   subsets: ['latin'],
@@ -43,7 +44,7 @@ export default function RootLayout({
       className={`${zillaSlab.variable} ${plexSans.variable} ${plexMono.variable}`}
     >
       <body>
-        {children}
+        <QueryProvider>{children}</QueryProvider>
         <Toaster />
       </body>
     </html>
