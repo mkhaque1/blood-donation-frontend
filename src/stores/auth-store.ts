@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { setCookie, deleteCookie } from '@/lib/cookies';
 
 export type Role = 'DONOR' | 'REQUESTER' | 'ADMIN';
 
@@ -21,10 +22,14 @@ export const useAuthStore = create<AuthState>()(
       accessToken: null,
       refreshToken: null,
       role: null,
-      setSession: ({ accessToken, refreshToken, role }) =>
-        set({ accessToken, refreshToken, role }),
-      clearSession: () =>
-        set({ accessToken: null, refreshToken: null, role: null }),
+      setSession: ({ accessToken, refreshToken, role }) => {
+        setCookie('lifeline-role', role);
+        set({ accessToken, refreshToken, role });
+      },
+      clearSession: () => {
+        deleteCookie('lifeline-role');
+        set({ accessToken: null, refreshToken: null, role: null });
+      },
     }),
     { name: 'lifeline-auth' },
   ),
