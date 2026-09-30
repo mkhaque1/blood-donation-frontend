@@ -35,15 +35,22 @@ export function RegisterForm() {
     watch,
     setValue,
     formState: { errors },
-    } = useForm<RegisterValues>({
+  } = useForm<RegisterValues>({
     resolver: zodResolver(registerSchema) as never,
     defaultValues: { role: initialRole, organizationType: 'INDIVIDUAL' },
   });
 
   const role = watch('role');
 
-  const onSubmit: SubmitHandler<RegisterValues> = (values) => {
-    registerMutation.mutate(values, {
+  const onSubmit = (values: RegisterValues) => {
+    const payload = {
+      ...values,
+      dateOfBirth: values.dateOfBirth
+        ? new Date(values.dateOfBirth).toISOString()
+        : undefined,
+    };
+
+    registerMutation.mutate(payload, {
       onError: (err) => {
         const message =
           err instanceof ApiError ? err.message : 'Registration failed';
