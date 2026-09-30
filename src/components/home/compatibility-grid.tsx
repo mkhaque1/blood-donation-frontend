@@ -1,3 +1,5 @@
+import { PulseLine } from '../ui/pulse-line';
+
 const compatibility: { group: string; donors: string[] }[] = [
   { group: 'O−', donors: ['O−'] },
   { group: 'O+', donors: ['O−', 'O+'] },
@@ -13,6 +15,7 @@ export function CompatibilityGrid() {
   return (
     <section className='bg-paper-raised border-y border-line-soft'>
       <div className='mx-auto max-w-6xl px-6 py-20'>
+        <PulseLine className='w-24 mb-10' />
         <h2 className='font-display text-3xl font-semibold max-w-[24ch]'>
           Who can donate to whom
         </h2>

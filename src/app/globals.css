@@ -21,7 +21,7 @@
   --font-data: var(--font-plex-mono);
 
   /* One deliberate radius scale — sharp by default, small radius only on pills */
-  --radius-sharp: 0px;
+  --radius-sharp: 5px;
   --radius-pill: 999px;
   --radius-card: 2px;
 }
