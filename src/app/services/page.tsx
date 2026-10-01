@@ -3,6 +3,7 @@ import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { PageHeader } from '@/components/layout/page-header';
 import { HowItWorks } from '@/components/home/how-it-works';
+import { MonitorVisual } from '@/components/ui/hero-visuals';
 
 export const metadata: Metadata = {
   title: 'How it works',
@@ -42,6 +43,7 @@ export default function ServicesPage() {
           eyebrow='the full lifecycle'
           title='From submission to completed donation'
           description='Every request moves through the same four stages. Nothing skips verification, and nothing bypasses eligibility checks.'
+          visual={<MonitorVisual />}
         />
 
         <section className='mx-auto max-w-6xl px-6 pb-20'>

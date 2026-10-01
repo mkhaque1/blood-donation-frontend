@@ -4,6 +4,7 @@ import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { PageHeader } from '@/components/layout/page-header';
 import { ContactForm } from '@/components/contact/contact-form';
+import { RadarPingVisual } from '@/components/ui/hero-visuals';
 
 export const metadata: Metadata = {
   title: 'Contact',
@@ -19,6 +20,7 @@ export default function ContactPage() {
           eyebrow='get in touch'
           title='Questions about a request, a donation, or a partnership'
           description="This isn't an emergency line — for a medical emergency, contact your local emergency services directly."
+          visual={<RadarPingVisual />}
         />
 
         <section className='mx-auto max-w-6xl px-6 pb-20 grid gap-12 md:grid-cols-[1fr_1.4fr]'>

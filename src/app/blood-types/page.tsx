@@ -3,6 +3,7 @@ import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { PageHeader } from '@/components/layout/page-header';
 import { CompatibilityGrid } from '@/components/home/compatibility-grid';
+import { NetworkVisual } from '@/components/ui/hero-visuals';
 
 export const metadata: Metadata = {
   title: 'Blood type compatibility',
@@ -34,6 +35,7 @@ export default function BloodTypesPage() {
           eyebrow='reference'
           title='Blood type compatibility, explained'
           description='LifeLine enforces these exact rules when matching donors to requests — nothing here is left to manual judgment.'
+          visual={<NetworkVisual />}
         />
 
         <section className='mx-auto max-w-6xl px-6 pb-16 grid gap-6 sm:grid-cols-2'>

@@ -64,3 +64,38 @@
     stroke-dashoffset: 0;
   }
 }
+
+@layer utilities {
+  .vital-spin {
+    animation: vital-spin 14s linear infinite;
+  }
+  .sonar-ring {
+    animation: sonar 2.4s ease-out infinite;
+  }
+  .ecg-trace {
+    animation: ecg-scroll 3.2s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .vital-spin,
+    .sonar-ring,
+    .ecg-trace {
+      animation: none;
+    }
+  }
+}
+
+@keyframes vital-spin {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(360deg); }
+}
+
+@keyframes sonar {
+  0% { transform: scale(0.6); opacity: 0.5; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+@keyframes ecg-scroll {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -200; }
+}

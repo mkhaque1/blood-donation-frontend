@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { PageHeader } from '@/components/layout/page-header';
+import { BloodDropVisual } from '@/components/ui/hero-visuals';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -13,11 +14,13 @@ export default function AboutPage() {
   return (
     <>
       <SiteHeader />
+
       <main>
         <PageHeader
           eyebrow='about this platform'
           title="Blood shortages aren't a supply problem. They're a coordination problem."
           description="On any given day, there's usually a compatible, willing donor somewhere nearby. The failure is almost always in finding them in time."
+          visual={<BloodDropVisual />}
         />
 
         <section className='mx-auto max-w-6xl px-6 pb-20 grid gap-12 md:grid-cols-2'>
