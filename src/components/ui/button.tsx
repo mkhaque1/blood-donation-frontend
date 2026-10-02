@@ -57,11 +57,7 @@ function Button({
   }
 
   return (
-    <ButtonPrimitive
-      data-slot='button'
-      className={classes}
-      {...props}
-    >
+    <ButtonPrimitive data-slot='button' className={classes} {...props}>
       {children}
     </ButtonPrimitive>
   );

@@ -1,0 +1,10 @@
+import { Skeleton } from '@/components/ui/skeleton';
+
+export default function ProfileLoading() {
+  return (
+    <div className='px-6 py-8 md:px-10 md:py-10 max-w-2xl space-y-4'>
+      <Skeleton className='h-7 w-40' />
+      <Skeleton className='h-32 w-full' />
+    </div>
+  );
+}
