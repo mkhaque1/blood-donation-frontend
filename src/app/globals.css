@@ -20,10 +20,10 @@
   --font-body: var(--font-plex-sans);
   --font-data: var(--font-plex-mono);
 
-  /* One deliberate radius scale — sharp by default, small radius only on pills */
-  --radius-sharp: 5px;
+  /* One deliberate radius scale — small radius only on pills */
+  --radius-sharp: 6px;
   --radius-pill: 999px;
-  --radius-card: 2px;
+  --radius-card: 6px;
 }
 
 @layer base {

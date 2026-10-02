@@ -31,7 +31,7 @@ export function AvailabilityToggle({ isAvailable }: { isAvailable: boolean }) {
       onClick={handleToggle}
       disabled={toggle.isPending}
       className={cn(
-        'flex items-center gap-3 border px-5 py-4 transition-colors w-full sm:w-auto',
+        'rounded-md flex items-center gap-3 border px-5 py-4 transition-colors w-full sm:w-auto',
         isAvailable
           ? 'border-pulse-teal bg-pulse-teal-soft'
           : 'border-line-soft',

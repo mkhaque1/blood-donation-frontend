@@ -70,7 +70,7 @@ export function RegisterForm() {
               type='button'
               onClick={() => setValue('role', r)}
               className={cn(
-                'border px-4 py-2.5 text-sm font-medium transition-colors',
+                'rounded-md border px-4 py-2.5 text-sm font-medium transition-colors',
                 role === r
                   ? 'border-ink bg-ink text-paper'
                   : 'border-line-soft text-ink-soft hover:border-ink',

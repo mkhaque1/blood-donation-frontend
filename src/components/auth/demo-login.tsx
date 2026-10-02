@@ -89,7 +89,7 @@ function DemoButton({
       type='button'
       disabled={loading}
       onClick={() => onClick(account.email, account.password, account.role)}
-      className={`border border-line-soft px-4 py-3.5 text-left hover:border-ink transition-colors disabled:opacity-50 ${full ? 'w-full' : ''}`}
+      className={`rounded-md border border-line-soft px-4 py-3.5 text-left hover:border-ink transition-colors disabled:opacity-50 ${full ? 'w-full' : ''}`}
     >
       <Icon size={18} className='text-blood' />
       <p className='mt-2 text-sm font-medium'>{account.label}</p>

@@ -85,7 +85,7 @@ export function DashboardShell({
           </span>
           <button
             onClick={handleLogout}
-            className='flex w-full items-center gap-3 px-3 py-2.5 text-sm text-ink-soft hover:bg-paper hover:text-blood transition-colors'
+            className='flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-sm text-ink-soft hover:bg-paper hover:text-blood transition-colors'
           >
             <LogOut size={16} />
             Log out

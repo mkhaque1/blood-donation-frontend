@@ -31,7 +31,7 @@ export default function DonorProfilePage() {
         <AvailabilityToggle isAvailable={profile.isAvailable} />
       </div>
 
-      <div className='mt-8 border border-line-soft'>
+      <div className='mt-8 border border-line-soft rounded-2xl'>
         <div className='flex items-center gap-3 border-b border-line-soft px-5 py-4'>
           <User size={18} className='text-blood' />
           <span className='font-display text-lg font-semibold'>
@@ -59,7 +59,7 @@ export default function DonorProfilePage() {
 
 function Row({ label, value }: { label: string; value: string }) {
   return (
-    <div className='flex items-center justify-between px-5 py-3.5'>
+    <div className='flex items-center justify-between px-5 rounded-md py-3.5'>
       <dt className='text-sm text-ink-soft'>{label}</dt>
       <dd className='text-sm font-mono'>{value}</dd>
     </div>
