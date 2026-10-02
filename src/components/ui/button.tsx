@@ -53,7 +53,7 @@ function Button({
     return React.cloneElement(child, {
       ...props,
       className: cn(classes, child.props.className),
-    } as any);
+    } as never);
   }
 
   return (

@@ -3,7 +3,7 @@ import { z } from 'zod';
 export const requestStepOneSchema = z.object({
   patientName: z.string().min(2, "Enter the patient's name"),
   bloodGroup: z.string().min(1, 'Select a blood group'),
-  unitsNeeded: z.coerce.number().int().positive('Enter at least 1 unit'),
+  unitsNeeded: z.number().int().positive('Enter at least 1 unit'),
 });
 
 export const requestStepTwoSchema = z.object({

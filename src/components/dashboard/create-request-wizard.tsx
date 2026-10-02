@@ -168,7 +168,7 @@ export function CreateRequestWizard() {
                 id='unitsNeeded'
                 type='number'
                 min={1}
-                {...register('unitsNeeded')}
+                {...register('unitsNeeded', { valueAsNumber: true })}
                 aria-invalid={!!errors.unitsNeeded}
               />
               {errors.unitsNeeded && (
