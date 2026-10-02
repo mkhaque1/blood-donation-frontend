@@ -54,7 +54,7 @@ export default function DonationHistoryPage() {
                     {new Date(donation.createdAt).toLocaleDateString()}
                   </p>
                 </div>
-                <StatusPill status={donation.status as any} />
+                <StatusPill status={donation.status as never} />
               </li>
             ))}
           </ul>
