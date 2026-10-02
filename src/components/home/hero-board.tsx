@@ -48,15 +48,15 @@ export function HeroBoard() {
         </p>
       )}
 
-      {data && data.length === 0 && (
+      {data?.items && data.items.length === 0 && (
         <p className='px-4 py-6 text-sm text-line'>
           No active requests right now — that&apos;s a good thing.
         </p>
       )}
 
-      {data && data.length > 0 && (
+      {data?.items && data.items.length > 0 && (
         <ul className='divide-y divide-line-soft'>
-          {data.map((req) => (
+          {data.items.map((req) => (
             <li key={req.id} className='flex items-center gap-4 px-4 py-3.5'>
               <span className='font-display text-xl font-semibold w-12 shrink-0'>
                 {formatGroup(req.bloodGroup)}

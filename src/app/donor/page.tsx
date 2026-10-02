@@ -19,7 +19,7 @@ export default function DonorTasksPage() {
   const acceptRequest = useAcceptRequest();
 
   const compatibleRequests = profile
-    ? requests?.filter((r) =>
+    ? requests?.items?.filter((r) =>
         isCompatibleDonor(profile.bloodGroup, r.bloodGroup),
       )
     : [];
