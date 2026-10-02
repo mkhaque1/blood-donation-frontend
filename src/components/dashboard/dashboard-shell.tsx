@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LogOut, LayoutGrid, History, UserCircle, type LucideIcon } from 'lucide-react';
+import { LogOut, LayoutGrid, History, UserCircle, Receipt, type LucideIcon } from 'lucide-react';
 import { useAuthStore } from '@/stores/auth-store';
 import { useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
@@ -18,6 +18,11 @@ const NAV_ITEMS: Record<string, NavItem[]> = {
     { href: '/donor', label: 'My tasks', icon: LayoutGrid },
     { href: '/donor/donations', label: 'Donation history', icon: History },
     { href: '/donor/profile', label: 'Profile', icon: UserCircle },
+  ],
+  requester: [
+    { href: '/dashboard', label: 'My requests', icon: LayoutGrid },
+    { href: '/dashboard/payments', label: 'Payments', icon: Receipt },
+    { href: '/dashboard/profile', label: 'Profile', icon: UserCircle },
   ],
 };
 
