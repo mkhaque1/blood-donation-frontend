@@ -145,7 +145,7 @@ export function CreateRequestWizard() {
                       setValue('bloodGroup', g, { shouldValidate: true })
                     }
                     className={cn(
-                      'border px-3 py-2.5 text-sm font-mono transition-colors',
+                      'rounded-md border px-3 py-2.5 text-sm font-mono transition-colors',
                       bloodGroup === g
                         ? 'border-ink bg-ink text-paper'
                         : 'border-line-soft hover:border-ink',
@@ -233,7 +233,7 @@ export function CreateRequestWizard() {
                     type='button'
                     onClick={() => setValue('urgency', level)}
                     className={cn(
-                      'border px-3 py-2.5 text-sm font-mono transition-colors',
+                      'rounded-md border px-3 py-2.5 text-sm font-mono transition-colors',
                       urgency === level
                         ? 'border-blood bg-blood/10 text-blood'
                         : 'border-line-soft hover:border-ink',

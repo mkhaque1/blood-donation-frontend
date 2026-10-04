@@ -4,7 +4,7 @@ import { Suspense, useState } from 'react';
 import { toast } from 'sonner';
 import { Receipt } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { StatusPill } from '@/components/ui/status-pill';
+import { PaymentStatusPill } from '@/components/ui/status-pill';
 import { useBloodRequests } from '@/hooks/use-blood-requests';
 import {
   useInitiatePriorityFee,
@@ -13,24 +13,19 @@ import {
 import { formatGroup } from '@/lib/blood-compatibility';
 import { ApiError } from '@/lib/api-types';
 import { BoardSkeleton } from '@/components/patterns/board-skeleton';
+import type { BloodRequest } from '@/hooks/use-blood-requests';
 
-function PaymentsContent() {
-  const { data, isLoading } = useBloodRequests({ limit: 50 });
+// Each row manages its own paymentId + polling independently.
+function PaymentRow({ req }: { req: BloodRequest }) {
+  const [paymentId, setPaymentId] = useState<string | null>(null);
   const initiateFee = useInitiatePriorityFee();
-  const [activePaymentId, setActivePaymentId] = useState<string | null>(null);
-  const { data: payment } = usePaymentStatus(activePaymentId);
+  const { data: payment } = usePaymentStatus(paymentId);
 
-  const eligibleRequests = data?.items.filter(
-    (r) => !r.isPriority && r.status !== 'CANCELLED',
-  );
-
-  const handlePay = (requestId: string) => {
-    initiateFee.mutate(requestId, {
+  const handlePay = () => {
+    initiateFee.mutate(req.id, {
       onSuccess: (res) => {
-        setActivePaymentId(res.paymentId);
-        toast.success(
-          'Payment initiated — confirm with your card to mark this request priority.',
-        );
+        setPaymentId(res.paymentId);
+        toast.success('Payment initiated — waiting for Stripe confirmation.');
       },
       onError: (err) => {
         const message =
@@ -39,6 +34,39 @@ function PaymentsContent() {
       },
     });
   };
+
+  return (
+    <li className='flex flex-col gap-3 px-5 py-4 sm:flex-row sm:items-center'>
+      <span className='font-display text-lg font-semibold w-14 shrink-0'>
+        {formatGroup(req.bloodGroup)}
+      </span>
+      <div className='min-w-0 flex-1'>
+        <p className='text-sm font-medium'>{req.patientName}</p>
+        <p className='text-xs text-line font-mono'>{req.hospitalName}</p>
+      </div>
+
+      {payment ? (
+        <PaymentStatusPill status={payment.status as 'PENDING' | 'SUCCEEDED' | 'FAILED'} />
+      ) : (
+        <Button
+          size='sm'
+          variant='outline'
+          onClick={handlePay}
+          disabled={initiateFee.isPending}
+        >
+          Mark priority
+        </Button>
+      )}
+    </li>
+  );
+}
+
+function PaymentsContent() {
+  const { data, isLoading } = useBloodRequests({ limit: 50 });
+
+  const eligibleRequests = data?.items.filter(
+    (r) => !r.isPriority && r.status !== 'CANCELLED',
+  );
 
   return (
     <div className='px-6 py-8 md:px-10 md:py-10 max-w-3xl'>
@@ -50,20 +78,6 @@ function PaymentsContent() {
         a real Stripe test-mode charge — confirmation happens via webhook, not a
         manual status flip.
       </p>
-
-      {activePaymentId && payment && (
-        <div className='mt-6 border border-line-soft px-5 py-4 flex items-center justify-between'>
-          <div>
-            <p className='text-sm font-medium'>
-              Payment {payment.id.slice(0, 8)}
-            </p>
-            <p className='text-xs text-line font-mono'>
-              ${(payment.amountCents / 100).toFixed(2)}
-            </p>
-          </div>
-          <StatusPill status={payment.status as never} />
-        </div>
-      )}
 
       <div className='mt-8'>
         {isLoading && <BoardSkeleton rows={3} />}
@@ -80,25 +94,7 @@ function PaymentsContent() {
         {eligibleRequests && eligibleRequests.length > 0 && (
           <ul className='border border-line-soft divide-y divide-line-soft'>
             {eligibleRequests.map((req) => (
-              <li key={req.id} className='flex items-center gap-4 px-5 py-4'>
-                <span className='font-display text-lg font-semibold w-14 shrink-0'>
-                  {formatGroup(req.bloodGroup)}
-                </span>
-                <div className='min-w-0 flex-1'>
-                  <p className='text-sm font-medium'>{req.patientName}</p>
-                  <p className='text-xs text-line font-mono'>
-                    {req.hospitalName}
-                  </p>
-                </div>
-                <Button
-                  size='sm'
-                  variant='outline'
-                  onClick={() => handlePay(req.id)}
-                  disabled={initiateFee.isPending}
-                >
-                  Mark priority
-                </Button>
-              </li>
+              <PaymentRow key={req.id} req={req} />
             ))}
           </ul>
         )}

@@ -21,7 +21,7 @@ const NAV_ITEMS: Record<string, NavItem[]> = {
   ],
   requester: [
     { href: '/dashboard', label: 'My requests', icon: LayoutGrid },
-    { href: '/dashboard/payments', label: 'Payments', icon: Receipt },
+    { href: '/dashboard/payment', label: 'Payments', icon: Receipt },
     { href: '/dashboard/profile', label: 'Profile', icon: UserCircle },
   ],
 };
