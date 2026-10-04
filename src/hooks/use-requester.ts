@@ -61,3 +61,13 @@ export function useInitiatePriorityFee() {
       ),
   });
 }
+
+export function usePaymentStatus(paymentId: string | null) {
+  return useQuery({
+    queryKey: ['payment', paymentId],
+    queryFn: () => apiClient.get<Payment>(`/payments/${paymentId}`),
+    enabled: !!paymentId,
+    refetchInterval: (query) =>
+      query.state.data?.status === 'PENDING' ? 3000 : false,
+  });
+}
