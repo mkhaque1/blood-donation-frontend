@@ -3,6 +3,7 @@
 import { Search } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useUrlFilters } from '@/hooks/use-url-filters';
+import { useDebounce } from '@/hooks/use-debounce';
 
 export function SearchInput({
   paramKey = 'q',
@@ -13,13 +14,11 @@ export function SearchInput({
 }) {
   const { setFilter, getFilter } = useUrlFilters();
   const [value, setValue] = useState(getFilter(paramKey) ?? '');
+  const debouncedValue = useDebounce(value);
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      setFilter(paramKey, value || undefined);
-    }, 400);
-    return () => clearTimeout(timeout);
-  }, [value]); // eslint-disable-line react-hooks/exhaustive-deps
+    setFilter(paramKey, debouncedValue || undefined);
+  }, [debouncedValue]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className='relative'>
