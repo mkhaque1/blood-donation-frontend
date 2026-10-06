@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LogOut, LayoutGrid, History, UserCircle, Receipt, type LucideIcon } from 'lucide-react';
+import { LogOut, LayoutGrid, History, UserCircle, Receipt, LayoutDashboard, ShieldCheck, Users, FileClock, type LucideIcon } from 'lucide-react';
 import { useAuthStore } from '@/stores/auth-store';
 import { useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
@@ -23,6 +23,12 @@ const NAV_ITEMS: Record<string, NavItem[]> = {
     { href: '/dashboard', label: 'My requests', icon: LayoutGrid },
     { href: '/dashboard/payment', label: 'Payments', icon: Receipt },
     { href: '/dashboard/profile', label: 'Profile', icon: UserCircle },
+  ],
+  admin: [
+    { href: '/admin', label: 'Overview', icon: LayoutDashboard },
+    { href: '/admin/verify', label: 'Verification queue', icon: ShieldCheck },
+    { href: '/admin/manage', label: 'Manage users', icon: Users },
+    { href: '/admin/reports', label: 'Audit logs', icon: FileClock },
   ],
 };
 
