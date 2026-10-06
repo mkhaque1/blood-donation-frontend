@@ -39,7 +39,7 @@ function MyRequestsContent() {
   };
 
   return (
-    <div className='px-6 py-8 md:px-10 md:py-10'>
+    <div className='px-6 py-8 md:px-10 md:py-10 overflow-x-hidden'>
       <div className='flex items-center justify-between flex-wrap gap-4'>
         <div>
           <h1 className='font-display text-2xl font-semibold'>My requests</h1>

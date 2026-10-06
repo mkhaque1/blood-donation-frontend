@@ -17,7 +17,7 @@ function AuditLogsContent() {
   const { data, isLoading } = useAdminAuditLogs({ page, limit: 20 });
 
   return (
-    <div className='px-6 py-8 md:px-10 md:py-10'>
+    <div className='px-6 py-8 md:px-10 md:py-10 overflow-x-hidden'>
       <h1 className='font-display text-2xl font-semibold'>Audit logs</h1>
       <p className='mt-1 text-sm text-ink-soft'>
         Every verification, status change, and moderation action.

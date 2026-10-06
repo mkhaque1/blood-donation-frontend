@@ -21,7 +21,7 @@ export function RoleFilter() {
           key={r.label}
           onClick={() => setFilter('role', r.value)}
           className={cn(
-            'border px-3 py-1.5 text-xs font-mono transition-colors',
+            'border px-3 py-1.5 text-xs font-mono transition-colors rounded-md',
             active === r.value || (!active && !r.value)
               ? 'border-ink bg-ink text-paper'
               : 'border-line-soft text-ink-soft hover:border-ink',

@@ -22,7 +22,7 @@ export function Pagination({
         <button
           onClick={() => setFilter('page', String(page - 1))}
           disabled={page <= 1}
-          className='border border-line-soft p-1.5 disabled:opacity-30'
+          className='rounded-md border border-line-soft p-1.5 disabled:opacity-30'
           aria-label='Previous page'
         >
           <ChevronLeft size={14} />
@@ -30,7 +30,7 @@ export function Pagination({
         <button
           onClick={() => setFilter('page', String(page + 1))}
           disabled={page >= totalPages}
-          className='border border-line-soft p-1.5 disabled:opacity-30'
+          className='rounded-md border border-line-soft p-1.5 disabled:opacity-30'
           aria-label='Next page'
         >
           <ChevronRight size={14} />

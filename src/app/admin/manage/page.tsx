@@ -43,7 +43,7 @@ function ManageUsersContent() {
   };
 
   return (
-    <div className='px-6 py-8 md:px-10 md:py-10'>
+    <div className='px-6 py-8 md:px-10 md:py-10 overflow-x-hidden'>
       <h1 className='font-display text-2xl font-semibold'>Manage users</h1>
       <p className='mt-1 text-sm text-ink-soft'>
         Activate, deactivate, and review every account.

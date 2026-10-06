@@ -41,7 +41,7 @@ export default function DonorTasksPage() {
   };
 
   return (
-    <div className='px-6 py-8 md:px-10 md:py-10 max-w-4xl'>
+    <div className='px-6 py-8 md:px-10 md:py-10 max-w-4xl overflow-x-hidden'>
       <h1 className='font-display text-2xl font-semibold'>My tasks</h1>
       <p className='mt-1 text-sm text-ink-soft'>
         Requests compatible with your blood group, open for a donor to accept.
