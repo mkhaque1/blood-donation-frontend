@@ -28,7 +28,7 @@ const NAV_ITEMS: Record<string, NavItem[]> = {
     { href: '/admin', label: 'Overview', icon: LayoutDashboard },
     { href: '/admin/verify', label: 'Verification queue', icon: ShieldCheck },
     { href: '/admin/manage', label: 'Manage users', icon: Users },
-    { href: '/admin/reports', label: 'Audit logs', icon: FileClock },
+    { href: '/admin/report', label: 'Audit logs', icon: FileClock },
   ],
 };
 
