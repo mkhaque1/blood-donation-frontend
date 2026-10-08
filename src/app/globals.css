@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 @theme {
-  /* Color tokens — named for what they mean, not generic scale numbers */
   --color-ink: #1a1210;
   --color-ink-soft: #372a26;
   --color-paper: #eff1ee;
